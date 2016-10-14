@@ -9,6 +9,9 @@ public final class Modifiers {
 			public int getAdditionalDamage() {
 				return damage;
 			}
+			public String toString() {
+				return String.format("Adds %s damage", damage); 
+			}
 		};
 	}
 	
@@ -20,6 +23,9 @@ public final class Modifiers {
 			public String getDamageType() {
 				return type;
 			}
+			public String toString() {
+				return String.format("Adds %s %s damage", damage, type);
+			}
 		};
 	}
 	
@@ -27,6 +33,9 @@ public final class Modifiers {
 		return new Modifier() {
 			public int getAdditionalDamage() {
 				return new Dice(numDice, numSides).roll();
+			}
+			public String toString() {
+				return String.format("Adds %dD%d damage", numDice, numSides);
 			}
 		};
 	}
@@ -38,6 +47,9 @@ public final class Modifiers {
 			}
 			public void onHit(Character src, Character target, Item weapon, HashMap<String, Integer> damage) {
 				src.addHealth(damage.entrySet().stream().mapToInt(entry -> entry.getValue()).sum());
+			}
+			public String toString() {
+				return String.format("Adds %dD%d damage and heals you for that much", numDice, numSides);
 			}
 		};
 	}

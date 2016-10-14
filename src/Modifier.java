@@ -18,4 +18,8 @@ public abstract class Modifier {
 		
 	}
 	
+	public String toString() {
+		return "";
+	}
+	
 }
